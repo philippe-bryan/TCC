@@ -82,5 +82,6 @@ public class MenuPrincipalCli extends AppCompatActivity {
         Intent intent = new Intent(getApplication(), PerfilCli.class);
         intent.putExtra("Id", cliente.getIdCli());
         startActivity(intent);
+        finish();
     }
 }

@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,13 @@ import com.example.tcc.Models.Produtos;
 import com.example.tcc.R;
 import com.example.tcc.TelaPagamento;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 public class CarrinhoFragment extends Fragment {
 
     View root;
@@ -44,11 +52,12 @@ public class CarrinhoFragment extends Fragment {
     RecyclerView rcvCar;
     Button btnComprar;
     TextView lblSemCompra, lblPrecoTotal;
-    String Email, Card, Nome, CodSeg, Valid, Band;
+    String Email, Card, Nome, CodSeg, Valid, Band, strDate;
     Cliente cliente;
     Compra compra;
     int idCli, idComp;
-
+    Calendar cal;
+    SimpleDateFormat sdf;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -116,7 +125,8 @@ public class CarrinhoFragment extends Fragment {
                                 .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         mydbComp = new DataBaseHelperCompra(getActivity());
-                                        if (mydbComp.insertComp(new Compra("10/12/2020","573.00",idCli))) {
+                                        PegaData();
+                                        if (mydbComp.insertComp(new Compra(strDate,"573.00",idCli))) {
                                             Toast.makeText(getActivity(), "Compra Realizada", Toast.LENGTH_SHORT).show();
                                             Cursor crs = mydbComp.getId();
                                             crs.moveToLast();
@@ -184,5 +194,11 @@ public class CarrinhoFragment extends Fragment {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void PegaData(){
+        cal = Calendar.getInstance();
+        sdf = new SimpleDateFormat("yyyy-MM-dd");
+        strDate = sdf.format(cal.getTime());
     }
 }

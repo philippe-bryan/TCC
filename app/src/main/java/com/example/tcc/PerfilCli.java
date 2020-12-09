@@ -21,7 +21,7 @@ public class PerfilCli extends AppCompatActivity {
     private DataBaseHelperCli mydb;
     EditText txtNome, txtCNPJ, txtEnd, txtRazao, txtTel, txtCel;
     String nome, cnpj, end, razao, tel, cel;
-    Button btnConcluir, btnCancelar;
+    Button btnConcluir, btnCancelar, btnVoltar;
     int id_To_Update = 0;
     Cliente cliente;
     int Id;
@@ -40,6 +40,7 @@ public class PerfilCli extends AppCompatActivity {
         txtCel = (EditText) findViewById(R.id.txtCelCli);
         btnConcluir = (Button) findViewById(R.id.btnConcluirEdit);
         btnCancelar = (Button) findViewById(R.id.btnCancelar3);
+        btnVoltar = (Button) findViewById(R.id.btnVoltar);
         txtCNPJ.addTextChangedListener(MarcarasDeTexto.mask(txtCNPJ, MarcarasDeTexto.FORMAT_CNPJ));
         txtTel.addTextChangedListener(MarcarasDeTexto.mask(txtTel, MarcarasDeTexto.FORMAT_TEL));
         txtCel.addTextChangedListener(MarcarasDeTexto.mask(txtCel, MarcarasDeTexto.FORMAT_CEL));
@@ -103,6 +104,8 @@ public class PerfilCli extends AppCompatActivity {
                 btnConcluir.setVisibility(View.VISIBLE);
                 btnCancelar.setClickable(true);
                 btnCancelar.setVisibility(View.VISIBLE);
+                btnVoltar.setClickable(false);
+                btnVoltar.setVisibility(View.GONE);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -137,16 +140,10 @@ public class PerfilCli extends AppCompatActivity {
                                 if (mydb.updateCli(new Cliente(id_To_Update, nome, cnpj, end, razao, tel, cel))) {
                                     Toast.makeText(getApplicationContext(), "Salvo atualizado com sucesso",
                                             Toast.LENGTH_SHORT).show();
-                                    txtNome.setEnabled(false);
-                                    txtCNPJ.setEnabled(false);
-                                    txtEnd.setEnabled(false);
-                                    txtRazao.setEnabled(false);
-                                    txtTel.setEnabled(false);
-                                    txtCel.setEnabled(false);
-                                    btnConcluir.setClickable(false);
-                                    btnConcluir.setVisibility(View.GONE);
-                                    btnCancelar.setClickable(false);
-                                    btnCancelar.setVisibility(View.GONE);
+                                    Intent intent = new Intent(getApplication(), PerfilCli.class);
+                                    intent.putExtra("Id", id_To_Update);
+                                    startActivity(intent);
+                                    finish();
                                 } else {
                                     Toast.makeText(getApplicationContext(), "falha na atualização",
                                             Toast.LENGTH_SHORT).show();
@@ -160,21 +157,16 @@ public class PerfilCli extends AppCompatActivity {
     }
 
     public void OnClickCancelar(View v){
-        txtNome.setText(cliente.getNome());
-        txtCNPJ.setText(cliente.getCNPJ());
-        txtEnd.setText(cliente.getEndereco());
-        txtRazao.setText(cliente.getRazaoSocial());
-        txtTel.setText(cliente.getTelefone());
-        txtCel.setText(cliente.getCelular());
-        txtNome.setEnabled(false);
-        txtCNPJ.setEnabled(false);
-        txtEnd.setEnabled(false);
-        txtRazao.setEnabled(false);
-        txtTel.setEnabled(false);
-        txtCel.setEnabled(false);
-        btnConcluir.setClickable(false);
-        btnConcluir.setVisibility(View.GONE);
-        btnCancelar.setClickable(false);
-        btnCancelar.setVisibility(View.GONE);
+        Intent intent = new Intent(getApplication(), PerfilCli.class);
+        intent.putExtra("Id", id_To_Update);
+        startActivity(intent);
+        finish();
+    }
+
+    public void OnClickVoltar(View v){
+        Intent intent = new Intent(getApplication(), MenuPrincipalCli.class);
+        intent.putExtra("Id", id_To_Update);
+        startActivity(intent);
+        finish();
     }
 }

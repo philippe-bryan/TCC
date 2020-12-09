@@ -125,6 +125,13 @@
                     android:text="@string/btnConcluir" />
             </LinearLayout>
 
+            <Button
+                android:id="@+id/btnVoltar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="OnClickVoltar"
+                android:text="@string/btnVoltar" />
+
         </LinearLayout>
     </ScrollView>
 

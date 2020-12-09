@@ -45,6 +45,7 @@
     <string name="btnMudarSenha">Mudar Senha</string>
     <string name="btnMudarEmail">Mudar Email</string>
     <string name="btnSair">Sair da Conta</string>
+    <string name="btnVoltar">Voltar ao menu</string>
 
     <string name="title_activity_menu_principal_cli">Menu Principal</string>
     <string name="title_fragment_produtos">Produtos</string>
@@ -55,6 +56,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="mnExcluir">Excluir Tudo</string>
+    <string name="mnRemove">Remover Tudo</string>
     <string name="mnEditar">Editar Perfil</string>
 
     <string name="menu_home">Menu Principal</string>

@@ -108,7 +108,6 @@ public class PedidosFragment extends Fragment {
                 builder.setMessage(R.string.deleteAll)
                         .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                mydb.deleteAll();
                                 mydbComp.deleteAll();
                                 Toast.makeText(getActivity(), R.string.delete_ok,
                                         Toast.LENGTH_SHORT).show();

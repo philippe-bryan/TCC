@@ -27,12 +27,13 @@ import com.example.tcc.R;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class TelaPagamento extends AppCompatActivity {
 
     EditText txtCartao, txtNomeCard, txtCodSeg, txtValidade, txtBandeira;
-    String validade, nomeCard, codSeg, card, bandeira, Email;
+    String validade, nomeCard, codSeg, card, bandeira, Email, strDate;
     DataBaseHelperCompra mydb;
     DataBaseHelperCli mydbCli;
     DataBaseHelperProd mydbProd;
@@ -40,6 +41,8 @@ public class TelaPagamento extends AppCompatActivity {
     Compra compra;
     int idCli, idComp;
     Button btnConfirmar;
+    Calendar cal;
+    SimpleDateFormat sdf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +101,9 @@ public class TelaPagamento extends AppCompatActivity {
                                     txtBandeira.setError("Digite a bandeira do cartão!");
                                 } else {
                                     SalvaCartao();
+                                    PegaData();
                                     mydb = new DataBaseHelperCompra(getApplication());
-                                    if (mydb.insertComp(new Compra("10/12/2020","200.00",idCli))) {
+                                    if (mydb.insertComp(new Compra(strDate,"200.00",idCli))) {
                                         Toast.makeText(getApplication(), "Compra Realizada", Toast.LENGTH_SHORT).show();
                                         Cursor crs = mydb.getId();
                                         crs.moveToLast();
@@ -146,5 +150,11 @@ public class TelaPagamento extends AppCompatActivity {
         ed.putString("Valid", cartao.getValid());
         ed.putString("Bandeira", cartao.getBandeira());
         ed.apply();
+    }
+
+    public void PegaData(){
+        cal = Calendar.getInstance();
+        sdf = new SimpleDateFormat("yyyy-MM-dd");
+        strDate = sdf.format(cal.getTime());
     }
 }
