@@ -1,23 +1,23 @@
 package com.example.tcc.Fragments;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.tcc.MainActivity;
-import com.example.tcc.MenuPrincipalCli;
+import com.example.tcc.Models.Login;
 import com.example.tcc.MudarEmail;
 import com.example.tcc.MudarSenha;
-import com.example.tcc.NovaSenha;
 import com.example.tcc.R;
 
 
@@ -59,6 +59,7 @@ public class Configuracao extends Fragment {
                 builder.setMessage(R.string.Sair)
                         .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
+                                ApagarLogin();
                                 Intent intent = new Intent(getActivity(), MainActivity.class);
                                 startActivity(intent);
                                 getActivity().finish();
@@ -76,5 +77,13 @@ public class Configuracao extends Fragment {
             }
         });
         return root;
+    }
+
+    public void ApagarLogin(){
+        SharedPreferences prefs = getActivity().getSharedPreferences("Login", Context.MODE_PRIVATE);
+        SharedPreferences.Editor ed = prefs.edit();
+        ed.putString("Email", null);
+        ed.putString("Senha", null);
+        ed.apply();
     }
 }

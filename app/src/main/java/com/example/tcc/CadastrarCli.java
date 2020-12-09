@@ -14,7 +14,6 @@ import com.example.tcc.Models.MarcarasDeTexto;
 
 public class CadastrarCli extends AppCompatActivity {
 
-    int from_Where_I_Am_Coming = 0;
     private DataBaseHelperCli mydb;
     EditText txtNome, txtCNPJ, txtEnd, txtRazao, txtTel,
             txtCel, txtLogin2, txtSenha, txtConfSenha;

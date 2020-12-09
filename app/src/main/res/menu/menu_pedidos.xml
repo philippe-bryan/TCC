@@ -4,6 +4,6 @@
     <item
         android:id="@+id/mnExcluiPed"
         android:orderInCategory="101"
-        android:title="@string/mnEditar"
+        android:title="@string/mnExcluir"
         app:showAsAction="never" />
 </menu>

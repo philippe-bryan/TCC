@@ -87,6 +87,9 @@
     <string name="delete_cancel">Cancelado</string>
     <string name="Sair">Tem certeza que deseja sair?</string>
     <string name="SairConta">Tem certeza que deseja sair da sua conta?</string>
+    <string name="deleteAll">Tem certeza que deseja remover todos os registros?</string>
+    <string name="Outro">Deseja usar outro cartão?</string>
+    <string name="OutroCard">Deseja usar outro cartão para realizar a compra?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

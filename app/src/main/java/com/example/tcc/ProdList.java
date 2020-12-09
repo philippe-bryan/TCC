@@ -26,7 +26,6 @@ public class ProdList extends AppCompatActivity {
     DataBaseHelperProd mydb;
     DataBaseHelperCli mydbCli;
     RecyclerView rcvProd;
-    Button btnComprar;
     String Email;
     Cliente cliente;
     int idCli, idComp;

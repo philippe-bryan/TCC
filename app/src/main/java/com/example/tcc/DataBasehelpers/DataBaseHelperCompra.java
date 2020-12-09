@@ -51,39 +51,10 @@ public class DataBaseHelperCompra extends SQLiteOpenHelper {
         return true;
     }
 
-    public Cursor getData(int Id_Compra) {
-        SQLiteDatabase dbFazendaCompra = this.getReadableDatabase();
-        Cursor res =  dbFazendaCompra.rawQuery( "select * from compra where Id_Compra="+Id_Compra+"", null );
-        return res;
-    }
-
     public Cursor getId() {
         SQLiteDatabase dbFazendaCompra = this.getReadableDatabase();
         Cursor res =  dbFazendaCompra.rawQuery( "select * from compra order by Id_Compra desc limit 1", null );
         return res;
-    }
-
-    public int numberOfRows(){
-        SQLiteDatabase dbFazendaCompra = this.getReadableDatabase();
-        int numRows = (int) DatabaseUtils.queryNumEntries(dbFazendaCompra, COMP_TABLE_NAME);
-        return numRows;
-    }
-
-    public boolean updateComp (Compra c) {
-        SQLiteDatabase dbFazendaCompra = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COMP_COLUMN_DATA, c.getData());
-        contentValues.put(COMP_COLUMN_PRECO, c.getPrecoCompra());
-        contentValues.put(COMP_COLUMN_ID_CLI, c.getId_Cli());
-        dbFazendaCompra.update(COMP_TABLE_NAME, contentValues, "Id_Compra = ? ", new String[] { Integer.toString(c.getId_Compra()) } );
-        return true;
-    }
-
-    public Integer deleteComp (Integer Id_Compra) {
-        SQLiteDatabase dbFazendaCompra = this.getWritableDatabase();
-        return dbFazendaCompra.delete(COMP_TABLE_NAME,
-                "Id_Compra = ?",
-                new String[] { Integer.toString(Id_Compra) });
     }
 
     public Integer deleteAll () {
@@ -91,39 +62,6 @@ public class DataBaseHelperCompra extends SQLiteOpenHelper {
         return dbFazendaCompra.delete(COMP_TABLE_NAME,
                 null,
                 null);
-    }
-
-    public ArrayList<String> getAllComp() {
-        ArrayList<String> array_list = new ArrayList<String>();
-
-        SQLiteDatabase dbFazendaCompra = this.getReadableDatabase();
-        Cursor res =  dbFazendaCompra.rawQuery( "select * from compra", null );
-        res.moveToFirst();
-
-        while(res.isAfterLast() == false){
-            array_list.add(res.getString(res.getColumnIndex(COMP_COLUMN_DATA)));
-            res.moveToNext();
-        }
-        return array_list;
-    }
-
-    public ArrayList<Compra> getCompList(int idCli) throws ParseException {
-        ArrayList<Compra> lista = new ArrayList<Compra>() ;
-
-        SQLiteDatabase dbFazendaCompra = this.getReadableDatabase();
-        Cursor res =  dbFazendaCompra.rawQuery( "select * from compra where Id_Cli="+idCli+" order by Id_Compra desc", null );
-        res.moveToFirst();
-
-        while(res.isAfterLast() == false){
-            Compra c = new Compra();
-            c.setData(res.getString(res.getColumnIndex(COMP_COLUMN_DATA)));
-            c.setId_Compra(Integer.parseInt(res.getString(res.getColumnIndex(COMP_COLUMN_ID))));
-            c.setPrecoCompra(res.getString(res.getColumnIndex(COMP_COLUMN_PRECO)));
-            c.setId_Cli(res.getInt(res.getColumnIndex(COMP_COLUMN_ID_CLI)));
-            lista.add(c);
-            res.moveToNext();
-        }
-        return lista;
     }
 
     public List<Compra> getAll(int idCli){

@@ -24,7 +24,6 @@ public class DetalProdCar extends AppCompatActivity {
 
     TextView lblNomeProd, lblDesc, lblDataValid, lblQtd, lblPreco;
     ImageView imgProd;
-    Button btnRemove;
     private DataBaseHelperProd mydb;
     private DataBaseHelperCli mydbCli;
     Produtos produtos;

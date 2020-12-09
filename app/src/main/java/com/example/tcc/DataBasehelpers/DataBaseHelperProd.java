@@ -72,33 +72,6 @@ public class DataBaseHelperProd extends SQLiteOpenHelper {
         return res;
     }
 
-    public Cursor getList() {
-        SQLiteDatabase dbFazendaProd = this.getReadableDatabase();
-        Cursor res =  dbFazendaProd.rawQuery( "select * from produtos", null );
-        return res;
-    }
-
-    public int numberOfRows(){
-        SQLiteDatabase dbFazendaProd = this.getReadableDatabase();
-        int numRows = (int) DatabaseUtils.queryNumEntries(dbFazendaProd, PROD_TABLE_NAME);
-        return numRows;
-    }
-
-    public boolean updateProd (Produtos p) {
-        SQLiteDatabase dbFazendaProd = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(PROD_COLUMN_NAME, p.getNome_Produc());
-        contentValues.put(PROD_COLUMN_DESC, p.getDescricao_Produc());
-        contentValues.put(PROD_COLUMN_TIPO, p.getTipo_Ani_Produc());
-        contentValues.put(PROD_COLUMN_VAL, p.getValidade_Produc().toString());
-        contentValues.put(PROD_COLUMN_QTD, p.getQuant_Produc());
-        contentValues.put(PROD_COLUMN_PRECO, p.getValor_Produc());
-        contentValues.put(PROD_COLUMN_ID_CLI, p.getId_Cli());
-        contentValues.put(PROD_COLUMN_ID_COMP, p.getId_Compra());
-        dbFazendaProd.update(PROD_TABLE_NAME, contentValues, "Id_Prod = ? ", new String[] { Integer.toString(p.getId_Prod()) } );
-        return true;
-    }
-
     public boolean updateIdComp (Produtos p) {
         SQLiteDatabase dbFazendaProd = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -119,46 +92,6 @@ public class DataBaseHelperProd extends SQLiteOpenHelper {
         return dbFazendaProd.delete(PROD_TABLE_NAME,
                 null,
                 null);
-    }
-
-    public ArrayList<String> getAllProd() {
-        ArrayList<String> array_list = new ArrayList<String>();
-
-        SQLiteDatabase dbFazendaProd = this.getReadableDatabase();
-        Cursor res =  dbFazendaProd.rawQuery( "select * from produtos", null );
-        res.moveToFirst();
-
-        while(res.isAfterLast() == false){
-            array_list.add(res.getString(res.getColumnIndex(PROD_COLUMN_NAME)));
-            res.moveToNext();
-        }
-        return array_list;
-    }
-
-    public ArrayList<Produtos> getProdList() throws ParseException {
-        ArrayList<Produtos> lista = new ArrayList<Produtos>() ;
-
-        SQLiteDatabase dbFazendaProd = this.getReadableDatabase();
-        Cursor res =  dbFazendaProd.rawQuery( "select * from produtos", null );
-        res.moveToFirst();
-
-        while(res.isAfterLast() == false){
-            Produtos p = new Produtos();
-            p.setNome_Produc(res.getString(res.getColumnIndex(PROD_COLUMN_NAME)));
-            p.setId_Prod(Integer.parseInt(res.getString(res.getColumnIndex(PROD_COLUMN_ID))));
-            p.setDescricao_Produc(res.getString(res.getColumnIndex(PROD_COLUMN_DESC)));
-            p.setTipo_Ani_Produc(res.getString(res.getColumnIndex(PROD_COLUMN_TIPO)));
-            p.setValidade_Produc(res.getString(res.getColumnIndex(PROD_COLUMN_VAL)));
-            p.setQuant_Produc(Integer.parseInt(res.getString(res.getColumnIndex(PROD_COLUMN_QTD))));
-            p.setValor_Produc(res.getString(res.getColumnIndex(PROD_COLUMN_PRECO)));
-            p.setImagem_Prod(Integer.parseInt(res.getString(res.getColumnIndex(PROD_COLUMN_IMG))));
-            p.setId_Cli(Integer.parseInt(res.getString(res.getColumnIndex(PROD_COLUMN_ID_CLI))));
-            p.setId_Compra(Integer.parseInt(res.getString(res.getColumnIndex(PROD_COLUMN_ID_COMP))));
-            lista.add(p);
-
-            res.moveToNext();
-        }
-        return lista;
     }
 
     public List<Produtos> getAll(int id_cli, int id_compra){

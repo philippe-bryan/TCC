@@ -1,10 +1,10 @@
 package com.example.tcc;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -50,44 +50,24 @@ public class MenuPrincipalCli extends AppCompatActivity {
         txtEmailUsu = (TextView) headerView.findViewById(R.id.txtEmailUsu);
 
         mydb = new DataBaseHelperCli(this);
-        Intent intent2 = getIntent();
-        Bundle bundleEmail = intent2.getExtras();
-        Email = bundleEmail.getString("Email");
-        if(!(Email.equals(""))) {
-            Cursor rs = mydb.getName(Email);
-            rs.moveToFirst();
+
+        SharedPreferences prefs = getSharedPreferences("Login", Context.MODE_PRIVATE);
+        if(prefs != null) {
+            Email = prefs.getString("Email", null);
             cliente = new Cliente();
-            cliente.setNome(rs.getString(rs.getColumnIndex(DataBaseHelperCli.CLI_COLUMN_NAME)));
-            cliente.setEmail(rs.getString(rs.getColumnIndex(DataBaseHelperCli.CLI_COLUMN_EMAIL)));
-            cliente.setIdCli(rs.getInt(rs.getColumnIndex(DataBaseHelperCli.CLI_COLUMN_ID)));
-            if (!rs.isClosed()) {
-                rs.close();
+            if (Email != null) {
+                Cursor rs = mydb.getName(Email);
+                rs.moveToFirst();
+                cliente = new Cliente();
+                cliente.setNome(rs.getString(rs.getColumnIndex(DataBaseHelperCli.CLI_COLUMN_NAME)));
+                cliente.setEmail(rs.getString(rs.getColumnIndex(DataBaseHelperCli.CLI_COLUMN_EMAIL)));
+                cliente.setIdCli(rs.getInt(rs.getColumnIndex(DataBaseHelperCli.CLI_COLUMN_ID)));
+                if (!rs.isClosed()) {
+                    rs.close();
+                }
+                txtUsuario.setText(cliente.getNome());
+                txtEmailUsu.setText(cliente.getEmail());
             }
-            txtUsuario.setText(cliente.getNome());
-            txtEmailUsu.setText(cliente.getEmail());
-        }
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_principal_cli, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
-
-        switch (item.getItemId()) {
-            case R.id.nav_produto:
-
-                return true;
-            case R.id.nav_carrinho:
-
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
         }
     }
 

@@ -1,7 +1,5 @@
 package com.example.tcc.Fragments;
 
-import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +12,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tcc.Adapters.ProdAdapter;
-import com.example.tcc.DataBasehelpers.DataBaseHelperCli;
-import com.example.tcc.DataBasehelpers.DataBaseHelperProd;
-import com.example.tcc.DetalheProd;
-import com.example.tcc.Models.Cliente;
 import com.example.tcc.Models.Produtos;
 import com.example.tcc.R;
 
@@ -29,7 +23,6 @@ public class ProdutosFragment extends Fragment {
     private List<Produtos> produtosList;
     View root;
     ProdAdapter adapter;
-    DetalheProd detalheProd;
     private RecyclerView rcvProd;
     private TextView lblInfo;
 

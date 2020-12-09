@@ -13,10 +13,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tcc.DataBasehelpers.DataBaseHelperCli;
-import com.example.tcc.DataBasehelpers.DataBaseHelperCli;
 import com.example.tcc.Models.Cliente;
 import com.example.tcc.Models.MarcarasDeTexto;
-import com.example.tcc.Models.Produtos;
 
 public class PerfilCli extends AppCompatActivity {
 
@@ -94,7 +92,7 @@ public class PerfilCli extends AppCompatActivity {
         super.onOptionsItemSelected(item);
 
         switch (item.getItemId()) {
-            case R.id.mnEditar:
+            case R.id.mnExcluiPed:
                 txtNome.setEnabled(true);
                 txtCNPJ.setEnabled(true);
                 txtEnd.setEnabled(true);

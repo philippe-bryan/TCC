@@ -44,24 +44,24 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }
             }
-                mydb = new DataBaseHelperCli(this);
-                btnEntrar.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View view) {
-                        Email = txtLogin.getText().toString();
-                        Senha = pswSenha.getText().toString();
+        mydb = new DataBaseHelperCli(this);
+        btnEntrar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Email = txtLogin.getText().toString();
+                Senha = pswSenha.getText().toString();
 
-                        Boolean checkuser = mydb.getLogin(Email, Senha);
-                        if (checkuser == false) {
-                            Toast.makeText(MainActivity.this, "Login ou senha invalidos", Toast.LENGTH_SHORT).show();
-                        } else {
-                            SalvaLogin();
-                            Intent intentLogar = new Intent(getApplication(), MenuPrincipalCli.class);
-                            intentLogar.putExtra("Email", Email);
-                            startActivity(intentLogar);
-                            finish();
-                        }
-                    }
-                });
+                Boolean checkuser = mydb.getLogin(Email, Senha);
+                if (checkuser == false) {
+                    Toast.makeText(MainActivity.this, "Login ou senha invalidos", Toast.LENGTH_SHORT).show();
+                } else {
+                    SalvaLogin();
+                    Intent intentLogar = new Intent(getApplication(), MenuPrincipalCli.class);
+                    intentLogar.putExtra("Email", Email);
+                    startActivity(intentLogar);
+                    finish();
+                }
+            }
+        });
     }
 
     public void SalvaLogin(){

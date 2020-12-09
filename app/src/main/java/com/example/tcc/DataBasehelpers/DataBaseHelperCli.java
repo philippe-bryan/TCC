@@ -89,12 +89,6 @@ public class DataBaseHelperCli extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public int numberOfRows(){
-        SQLiteDatabase dbFazenda = this.getReadableDatabase();
-        int numRows = (int) DatabaseUtils.queryNumEntries(dbFazenda, CLI_TABLE_NAME);
-        return numRows;
-    }
-
     public boolean updateSenha (Cliente c) {
         SQLiteDatabase dbFazenda = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -122,67 +116,5 @@ public class DataBaseHelperCli extends SQLiteOpenHelper {
         contentValues.put(CLI_COLUMN_RAZAO, c.getRazaoSocial());
         dbFazenda.update(CLI_TABLE_NAME, contentValues, "Id_Cliente = ? ", new String[] { Integer.toString(c.getIdCli()) } );
         return true;
-    }
-
-    public boolean updateConta (Cliente c) {
-        SQLiteDatabase dbFazenda = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(CLI_COLUMN_SENHA, c.getSenha());
-        contentValues.put(CLI_COLUMN_EMAIL, c.getEmail());
-        dbFazenda.update(CLI_TABLE_NAME, contentValues, "Id_Cliente = ? ", new String[] { Integer.toString(c.getIdCli()) } );
-        return true;
-    }
-
-    public Integer deleteCli (Integer Id_Cliente) {
-        SQLiteDatabase dbFazenda = this.getWritableDatabase();
-        return dbFazenda.delete(CLI_TABLE_NAME,
-                "Id_Cliente = ?",
-                new String[] { Integer.toString(Id_Cliente) });
-    }
-
-    public Integer deleteAll () {
-        SQLiteDatabase dbFazenda = this.getWritableDatabase();
-        return dbFazenda.delete(CLI_TABLE_NAME,
-                null,
-                null);
-    }
-
-    public ArrayList<String> getAllCli() {
-        ArrayList<String> array_list = new ArrayList<String>();
-
-        SQLiteDatabase dbFazenda = this.getReadableDatabase();
-        Cursor res =  dbFazenda.rawQuery( "select * from cliente", null );
-        res.moveToFirst();
-
-        while(res.isAfterLast() == false){
-            array_list.add(res.getString(res.getColumnIndex(CLI_COLUMN_NAME)));
-            res.moveToNext();
-        }
-        return array_list;
-    }
-
-    public ArrayList<Cliente> getCliList() throws ParseException {
-        ArrayList<Cliente> lista = new ArrayList<Cliente>() ;
-
-        SQLiteDatabase dbFazenda = this.getReadableDatabase();
-        Cursor res =  dbFazenda.rawQuery( "select * from cliente", null );
-        res.moveToFirst();
-
-        while(res.isAfterLast() == false){
-            Cliente c = new Cliente();
-            c.setNome(res.getString(res.getColumnIndex(CLI_COLUMN_NAME)));
-            c.setIdCli(Integer.parseInt(res.getString(res.getColumnIndex(CLI_COLUMN_ID))));
-            c.setCNPJ(res.getString(res.getColumnIndex(CLI_COLUMN_CNPJ)));
-            c.setCelular(res.getString(res.getColumnIndex(CLI_COLUMN_CEL)));
-            c.setTelefone(res.getString(res.getColumnIndex(CLI_COLUMN_TEL)));
-            c.setEndereco(res.getString(res.getColumnIndex(CLI_COLUMN_END)));
-            c.setRazaoSocial(res.getString(res.getColumnIndex(CLI_COLUMN_RAZAO)));
-            c.setSenha(res.getString(res.getColumnIndex(CLI_COLUMN_SENHA)));
-            c.setEmail(res.getString(res.getColumnIndex(CLI_COLUMN_EMAIL)));
-            lista.add(c);
-
-            res.moveToNext();
-        }
-        return lista;
     }
 }

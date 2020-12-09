@@ -21,7 +21,6 @@ public class MudarEmail extends AppCompatActivity {
     String email, novoEmail;
     DataBaseHelperCli mydb;
     Cliente cliente;
-    int idCli;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
