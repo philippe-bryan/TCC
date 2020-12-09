@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_produto"
+            android:icon="@drawable/ic_outline_shopping_bag"
+            android:title="@string/menu_produtos" />
+        <item
+            android:id="@+id/nav_carrinho"
+            android:icon="@drawable/ic_outline_shopping_cart_24"
+            android:title="@string/menu_Carrinho" />
+        <item
+            android:id="@+id/nav_pedidos"
+            android:icon="@drawable/ic_baseline_playlist_add_check_24"
+            android:title="@string/menu_pedidos" />
+        <item
+            android:id="@+id/nav_configuracao"
+            android:icon="@drawable/ic_baseline_settings"
+            android:title="@string/menu_configuracao" />
+    </group>
+</menu>

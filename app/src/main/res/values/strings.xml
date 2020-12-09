@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">Fazenda Rei do Gado</string>
+
+    <string name="lblCad">Cadastro de Usuario </string>
+    <string name="lblNome">Nome: </string>
+    <string name="lblCNPJ">CNPJ: </string>
+    <string name="lblEnd">Endereço: </string>
+    <string name="lblRazao">Razão Social: </string>
+    <string name="lblTel">Telefone: </string>
+    <string name="lblCel">Celular: </string>
+    <string name="lblLogin">Email: </string>
+    <string name="lblSenha">Senha: </string>
+    <string name="lblPrecoTotal">Preço final: </string>
+    <string name="lblCompra">Nenhum item adicionado no carrinho.</string>
+    <string name="lblEmail">Digite seu Email:</string>
+    <string name="lblConfSenha">Confirmar Senha:</string>
+    <string name="lblSemPedidos">Nenhuma compra realizada ainda</string>
+    <string name="lblPreco">Preço: </string>
+    <string name="lblValid">Data de Validade: </string>
+    <string name="lblValidCard">Data de Validade(Mes/Ano): </string>
+    <string name="lblQtd">Quantidade: </string>
+    <string name="lblDesc">Descrição: </string>
+    <string name="lblInfo">Nenhum produto disponivel. </string>
+    <string name="lblNovaSenha">Digite a nova senha. </string>
+    <string name="lblConfNovaSenha">Confirme a nova senha: </string>
+    <string name="lblCod">Digite o codigo de confirmação: </string>
+    <string name="lblPerfil">Meu Perfil</string>
+    <string name="lblCard">Numero do cartão:</string>
+    <string name="lblNomeCard">Nome no cartão:</string>
+    <string name="lblCodSeg">Codigo de segurança:</string>
+    <string name="lblBandeira">Bandeira:</string>
+    <string name="lblNovoEmail">Novo email:</string>
+
+    <string name="btnEsqueci">Esqueceu a senha?</string>
+    <string name="btnEntrar">Entrar</string>
+    <string name="btnCadastrar">Cadastrar</string>
+    <string name="btnCancelar">Cancelar</string>
+    <string name="btnConcluir">Concluir</string>
+    <string name="btnAdd">Adicionar ao Carrinho</string>
+    <string name="btnCompra">Realizar Compra</string>
+    <string name="btnRedefinir">Redefinir Senha</string>
+    <string name="btnConfirm">Confirmar</string>
+    <string name="btnReevio">Remandar codigo</string>
+    <string name="btnRemove">Remover do carrinho</string>
+    <string name="btnMudarSenha">Mudar Senha</string>
+    <string name="btnMudarEmail">Mudar Email</string>
+    <string name="btnSair">Sair da Conta</string>
+
+    <string name="title_activity_menu_principal_cli">Menu Principal</string>
+    <string name="title_fragment_produtos">Produtos</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="mnExcluir">Excluir Tudo</string>
+    <string name="mnEditar">Editar Perfil</string>
+
+    <string name="menu_home">Menu Principal</string>
+    <string name="menu_produtos">Produtos</string>
+    <string name="menu_Carrinho">Carrinho</string>
+    <string name="menu_pedidos">Meus Pedidos</string>
+    <string name="menu_configuracao">Configurações</string>
+    <string name="title_activity_configurações">Configurações</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="deleteCar">Tem certeza que deseja remover do carrinho?</string>
+    <string name="deleteCarAviso">Deseja mesmo remover este produto do seu carrinho?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="delete_ok">Removido com sucesso</string>
+    <string name="delete_cancel">Cancelado</string>
+    <string name="Sair">Tem certeza que deseja sair?</string>
+    <string name="SairConta">Tem certeza que deseja sair da sua conta?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

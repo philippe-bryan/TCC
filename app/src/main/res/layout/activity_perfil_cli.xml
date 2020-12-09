@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PerfilCli">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lblPerfl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblPerfil"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/lblNomeCli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblNome" />
+
+            <EditText
+                android:id="@+id/txtNomeCli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/lblCNPJCli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblCNPJ" />
+
+            <EditText
+                android:id="@+id/txtCNPJCli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/lblEndCli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblEnd" />
+
+            <EditText
+                android:id="@+id/txtEndCli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/lblRazaoCli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblRazao" />
+
+            <EditText
+                android:id="@+id/txtRazaoCli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/lblTelCli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblTel" />
+
+            <EditText
+                android:id="@+id/txtTelCli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/lblCelCli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblCel" />
+
+            <EditText
+                android:id="@+id/txtCelCli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCancelar3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="OnClickCancelar"
+                    android:text="@string/btnCancelar" />
+
+                <Button
+                    android:id="@+id/btnConcluirEdit"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:onClick="OnClickEditar"
+                    android:text="@string/btnConcluir" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
