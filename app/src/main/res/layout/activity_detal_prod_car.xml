@@ -79,7 +79,7 @@
 
                 <Button
                     android:id="@+id/btnRemove"
-                    android:layout_width="160dp"
+                    android:layout_width="match_parent"
                     android:layout_height="54dp"
                     android:layout_gravity="right"
                     android:onClick="btnRemoveOnclick"
